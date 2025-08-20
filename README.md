@@ -11,7 +11,7 @@ Un site d'affichage météo simple et élégant, combinant données officielles 
 
 ## 📊 Sources de données
 
-- **[SwissMetNet](https://opendata.swiss/dataset/messwerte-meteorologischer-parameter)** via [Existenz API](https://api.existenz.ch) - Données officielles MétéoSuisse
+- **[SwissMetNet]([https://opendata.swiss/dataset/messwerte-meteorologischer-parameter](https://www.meteoswiss.admin.ch/home/measurement-and-forecasting-systems/land-based-stations/automatisches-messnetz.html))** via [Existenz API](https://api.existenz.ch) - Données officielles MétéoSuisse
 - **[Prévision-Météo.ch](https://prevision-meteo.ch)** - Prévisions et conditions actuelles
 
 ## 🚀 Installation
