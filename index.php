@@ -67,6 +67,23 @@ try {
     // Silently fail if SMN data not available
 }
 
+// Ajuster les températures d'aujourd'hui si la température actuelle dépasse les prévisions
+if ($current_data && isset($current_data['temperature']) && isset($weather_data['fcst_day_0']['tmax']) && isset($weather_data['fcst_day_0']['tmin'])) {
+    $current_temp_rounded = round($current_data['temperature']);
+    $predicted_tmax = (int)$weather_data['fcst_day_0']['tmax'];
+    $predicted_tmin = (int)$weather_data['fcst_day_0']['tmin'];
+
+    // Ajuster la température maximale si la température actuelle est plus élevée
+    if ($current_temp_rounded > $predicted_tmax) {
+        $weather_data['fcst_day_0']['tmax'] = $current_temp_rounded;
+    }
+
+    // Ajuster la température minimale si la température actuelle est plus basse
+    if ($current_temp_rounded < $predicted_tmin) {
+        $weather_data['fcst_day_0']['tmin'] = $current_temp_rounded;
+    }
+}
+
 // Fonction pour convertir la direction du vent en texte
 function getWindDirection($degrees)
 {
@@ -414,7 +431,7 @@ function formatWind($data)
                             <i class="fas fa-tint"></i>
                             <?php echo isset($current_data['humidity']) ? round($current_data['humidity']) . '%' : 'N/A'; ?>
                         </div>
-                        <div class="tile">
+                        <div class="tile" style="margin-right: 0;">
                             <i class="fas fa-cloud-rain"></i>
                             <span id="precipitation-display">
                                 <?php
